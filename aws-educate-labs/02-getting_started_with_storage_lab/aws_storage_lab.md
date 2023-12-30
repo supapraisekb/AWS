@@ -1,4 +1,4 @@
-# PREREQUIITES FOR TH LAB
+# PREREQUIITES FOR THE LAB
 
 PREREQUISITES
 This lab requires the following:

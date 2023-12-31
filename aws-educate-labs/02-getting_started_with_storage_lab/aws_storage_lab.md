@@ -30,7 +30,12 @@ This lab requires the following:
 
 6. When you have successfully completed the tasks choose End Lab.
 
-7. 7.A pop-up will ask you to confirm that you want to end the lab. 
+
+    
+    ![End Lab](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/end_lab.JPG)
+
+
+7. A pop-up will ask you to confirm that you want to end the lab. 
 
 
 # Task 1: Creating a bucket in Amazon S3
@@ -40,6 +45,12 @@ This task involves the creation of an S3 bucket and to configure it for static w
 ## Steps:
 
 1. In the AWS Management Console, on the Services menu, choose S3
+
+
+
+![Search S3](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/S3_search.JPG)
+
+
 
 2. Choose **Create bucket** 
 
@@ -65,12 +76,26 @@ website-<random number>
 
 6. For **Block Public Access settings for this bucket**, clear the check box for Block all public access, and then select the box that states **I acknowledge that the current settings might result in this bucket and the objects within becoming public**.
 
+
+
+    ![Uncheck block public access](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/block_public_access_unchecked.JPG)
+
+
 7. For **Bucket Versioning**, choose **Enable**.
+
+    ![Enable Bucket Versioning](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/bucket_versioning.JPG)
+
+
 
 **Note:** Once you turn on (enable) bucket versioning, you can’t turn it off.
 
+
+
 8. For Tags, choose Add tag, and enter the following:
 
+    ![Add Tags](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/Tags_add_tags.JPG)
+
+ 
 **Key:** ``Department``
 
 **Value:** ``Marketing``
@@ -78,19 +103,32 @@ website-<random number>
  You can add additional information to a bucket, using tags such as a project code, cost center, or owner.
 Choose **Create bucket**
 
+![Create Bucket](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/choose_create_bucket.JPG)
+
 9. In the **Buckets** section, choose the name of your new bucket.
 
-10. Choose the **Properties** tab.
+
+
+10. Choose the **Properties** tab to view the details of your created bucket.
+
+    ![Propertie Tab](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/properties_tab.JPG)
+
 
 # Task 2: Configuring a static website on Amazon S3
 
 Here we configure the bucket for static website hosting.
 
+    
 ## Steps:
 
 11. Scroll to the **Static website hosting** panel.
 
+    ![Static Website Hosting](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/static_website_hosting_config.JPG)
+
+
 12. Choose **Edit**
+
+
 
 13. Configure the following settings:
 
@@ -98,10 +136,14 @@ Here we configure the bucket for static website hosting.
 - Hosting type: Choose Host a static website.
 - Index document: Enter ``index.html``
 - Error document: Enter ``error.html``
+
+    ![Static Website Hosting](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/static_website_hosting_config.JPG)
  
  14. Choose **Save changes**
 
 In the **Static website hosting** panel under Bucket website endpoint, click the link.
+
+    ![Stati Website Hosting](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/bucket_website_endpoint.JPG)
 
 You will get a 403 Forbidden message 
 
@@ -114,6 +156,7 @@ because you have not yet configured the bucket permissions. Keep this browser ta
 
   You have configured your bucket to host a static website.
 
+
 # Task 3: Uploading content to your bucket
 
 In this task, the static web files are uploaded to the bucket.
@@ -125,13 +168,13 @@ In this task, you upload the static files to your bucket.
 15. Choose (right-click) each of the following links (links provided by the aws educate labs environment), and download the files to your computer. IF you already have your html, javascript and css files on your pc jump to 
  Ensure that each file keeps the same file name, including the extension.
 
-index.html
-script.js
-style.css
+``index.html``
+``script.js``
+``style.css``
 
 16. Return to the Amazon S3 console, and choose the **Objects** tab.
 
-17. Choose **Upload**
+17. Choose **Upload** 
 
 18. Choose **Add files**
 
@@ -139,15 +182,19 @@ style.css
 
 20. Choose **Upload**
 
-Your files are uploaded to the bucket.
+    ![Choose Upload](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/upload_.JPG)
 
-21. Choose **Close**
+    Your files are uploaded to the bucket.
+
+
+21. Choose **Close** 
+
 
 # Task 4: Turning on public access to the objects
 
-Objects that are stored in Amazon S3 are private by default. This setting helps keep your organization’s data secure.
+    Objects that are stored in Amazon S3 are private by default. This setting helps keep your organization’s data secure.
 
-In this task, you make the uploaded objects publicly accessible so users can view your website.
+    In this task, you make the uploaded objects publicly accessible so users can view your website.
 
 ## Steps
 
@@ -184,6 +231,8 @@ Your static website is now publicly accessible.
 
 29. Refresh  the webpage.
 
+    ![Website is now live](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/website_now-live.JPG)
+
 The static website that is being hosted by Amazon S3 should be up and running.
 
 # Task 5: Securely sharing an object using a presigned URL
@@ -219,14 +268,22 @@ Like when you first uploaded the website files, the ***new-report.png*** file is
 
 38. In the Objects tab, choose  **new-report.png.**
 
-39. From the Actions menu, select **Share with a presigned URL**
+39. From the Actions menu, select **Share with a presigned URL** 
 
 40. In the pop-up window, configure the **Time interval** until the presigned URL expires:
 
 41. Choose **Minutes**
+
+
 42. Choose **Create presigned URL**
 
+    ![Create Presigned URL](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/create-presigned-url.JPG)
+
 43. From the banner at the top of the page, choose **Copy presigned URL.**
+
+
+
+![cOPY PRESIGNED url](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/copied_presigned_url.JPG)
 
 44. Open a new browser tab, and paste the URL you copied into the address bar.
 
@@ -236,6 +293,7 @@ If you wait beyond the time you chose and use the link again, you will find that
 
 
 # Task 6: Using a bucket policy to secure your bucket
+
 
 Here, we seek to protect your website files and make sure that no one can delete them. To do this, you apply a bucket policy that denies delete privileges on your website files.
 
@@ -290,7 +348,8 @@ Note: Your bucket name will be different. Be sure to use the name of the bucket 
 
 48. Choose **Save changes**
 
-49. eturn to the the **Object tab**
+49. Return to the the **Object tab**
+
 
 50. Select  **index.html**
 
@@ -336,6 +395,8 @@ and substitute your name for *<YOUR-NAME>* (for example, **Created by Joe**).
 
 60. Return to the web browser tab with the static website, and refresh  the page.
 
+    ![Updated website](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/updated_webpage.JPG)
+
 Your name should now be on the page.
 
 
@@ -352,6 +413,8 @@ Recall that when you created your bucket, you turned on versioning. In this task
 61. Return to the Amazon S3 console, and choose the **Objects** tab.
 
 62. Choose  **Show versions** to turn on bucket versioning.
+
+![Versioning](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/ve)
 
 63. Review the list of objects in the bucket.
 

@@ -143,10 +143,7 @@ Here we configure the bucket for static website hosting.
 
 In the **Static website hosting** panel under Bucket website endpoint, click the link.
 
-    ![Static Website Hosting](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/bucket_website_endpoint.JPG)
-
 You will get a 403 Forbidden message 
-
 
 ![403 Forbidden message](/AWS/aws-educate-labs/assets/screenshots/002-amazon_storage_lab/403_forbidden.JPG)
 

@@ -2,7 +2,7 @@ Part 1: Exploring the Default VPC
 
 # Task 1: Exploring the Example of VPC Configuration
 
-In this section, i explored the example VPC provided by AWS. It is a model of the default VPC created with every AWS account.
+In this section, I explored the example VPC provided by AWS. It is a model of the default VPC created with every AWS account.
 
 VPCs are logically isolated from other Virtual networks in the AWS cloud. 
 
@@ -14,17 +14,18 @@ From the lab environment:
 
 1. I acessed the **services** menu the AWS managemnet console and typed **VPC**. I chose ***VPC*** from the search results. 
 
-2. Too see the available VPCs, in the left navigation pane i chose **Your VPCs**
+2. To see the available VPCs, in the left navigation pane i chose **Your VPCs**
 
-There are two existing VPCs created for the lab namely: default VPC and Ecample VPC.
+There are two existing VPCs created for the lab namely: default VPC and Example VPC.
 
-![Default and Example VPC]()
+![Default and Example VPC](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/02-default_VPCs.JPG)
 
 3. I noticed that the Example VPC has a CIDR block of 
 
 ```
 172.31.0.0/16
 ```
+![IPV4 CIDR block](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/03-IPV4_cidr_block.jpg)
 
 This CIDR range includes all addresses from 172.31.0.0 through 172.31.255.255
 
@@ -44,13 +45,14 @@ The image below is an example of a VPC with 4 subnets
 
 I noticed that all the subnets that begin with the name **Public Subnets** are associated with the Example VPC.
 
-![choose subnets]()
+![choose subnets](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/04-subnets_in_VC.JPG)
 
 Each of the subnets has it's own different IPV4 CIDR range.  Always ensure that CIDR ranges do not overlap when planning your design
 
-6. FFrom the list of Subnets iI chose the subnet named **Public Subnet 1**
+6. From the list of Subnets I chose the subnet named **Public Subnet 1**
 
 The subnet has a CIDR block of 172.31.0.0/20
+![Public Subnet 1 showing the the CIDR block](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/06-Public_subnet_1_details.JPG)
 
 ``The VPC has a CIDR block of 172.31.0.0/16``  
 
@@ -61,9 +63,14 @@ Adress ranges from
 
 a total of 4,096 address. 
 
-i noticed that the console display only 4,091 addresses as being available because AWS reserves 5 address in each subnet.
+I noticed that the console display only 4,091 addresses as being available because AWS reserves 5 address in each subnet. 
+
+![4091 available IP addresses](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/06b-4090-available-IPV4_addressed.jpg)
 
 7. The **Auto-assign public IPV4 address** is set to **Yes** 
+
+
+![Auto-assign Public IPV4 address set to yes](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/07-auto_assign_IPV4_yes.JPG)
 
 For this reason, the subnet automatically assigns a public IP address for all instances that are launched into it.
 
@@ -71,7 +78,7 @@ For this reason, the subnet automatically assigns a public IP address for all in
 
 The goal of this task is to give insignt into the VPC's internet gateway (IGW).
 
-Internet gateway is the mechanism that permits the flow of traffic from resource in a the VPC to the internet. IGW is highly available and horisontally scalable. 
+Internet gateway is the mechanism that permits the flow of traffic from resources in a the VPC to the internet. IGW is highly available and horisontally scalable. 
 
 ![internet gateway architecture](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/07-IGW_architecture.JPG)
 
@@ -80,12 +87,12 @@ Internet gateway is the mechanism that permits the flow of traffic from resource
 
 Two main functions of the IGW are:
 
-- To designnate a target in the route tables that connects to the internet
+- To designate a target in the route tables that connects to the internet
 - To perform network address translation (NAT) for the instances that have a public IP address.
 
 8. I chose **Internet Gateways** from the navigation pane
 
-![Select internet gateways from nav pane]()
+![Example internet gateways overview](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/08-internet_gateway.JPG)
 
 9. I selected the row containing the internet gateway named **Example Internet Gateway**
 
@@ -118,7 +125,10 @@ b. and a local ip of the VPC
 
 11. I located and selected the route table named **Public Route Table** 
 
+
 12. Choose the routes at the lower half of the page.
+
+![Public route tables](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/11-public_route_table_details.JPG)
 
 I observed two routes:
 
@@ -137,6 +147,8 @@ tab
 14. In the **Explicit subnet associations** section, I saw that that the subnet with the IPV4 CIDR ``172.31.0.0/20`` is included in the ist. 
 This is a different subnet from what i reviewed earlier.
 
+![puclic subnet Associations](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/13-EXPLICIT_SUBNET_ASSOCIATIONS.JPG)
+
 All of the subnets in the lsit are public subnets because they have a route table entry that sends traffic to the internet through the internet gateway
 
 # Task 5: Exploring the Security Groups
@@ -150,27 +162,35 @@ It controls the inbound and outbound traffic to the instance.
 ![VPC architecture showing Security Grouo table](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/task5-security-groups.JPG)
 
 15. I selected **Security groups** from the left navigation pane
-16. Find and select the row which containsthe **default** securty group of the Example VPC 
+16. Find and select the row which contains the **default** securty group of the Example VPC 
 
-N/B: I located the Examole VPC using the ID i saved earlier in the task
+N/B: I located the Example VPC using the ID I saved earlier in the task
 
 17. from the lower half of the page I chose the **Outbound Rules** tab 
+
+![Choose ioutboundd rules](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/17-choose_outbound_rules.JPG)
+
 
 The rule allows **all** protocols and **all** port ranges to send traffic to any IP address  ``0.0.0.0/0``
 
 18. Chose the **Inbound Rules** tab
 
+![inbound rules tab](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/18-choose_inbound_rules.jpg)
 
 This rule allows all incoming traffic to **All** Protocols and **All** ports from resources that use the default  SG.
 
 It is against good practices to make changes to the default security group rather I will need to create a new one and then add a rule to the new security group according to the specified needs
 
-18. Locate a row containing the **Web-Server-SG** security group for the Example VPC and select it
+19. Locate a row containing the **Web-Server-SG** security group for the Example VPC and select it
 
-19. In the lower half of the page, I chose **Inbound Rules** tab
-20. **Edit Inbound rules**
-21. **Add rule**
-22. I made the following configurations:
+![Web-server-SG](/aws/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/19-Web-Server_Security_Group.JPG)
+20. In the lower half of the page, I chose **Inbound Rules** tab
+21. **Edit Inbound rules**
+22. **Add rule**
+
+![edit inbound rules/add rule](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/22-add_rules.JPG)
+
+I made the following configurations:
 
 - For **Type** I chose **HTTP**
 - From **Source type** dropdown, I chose **Anywhere IPV4**
@@ -181,6 +201,8 @@ Allow web access
 ```
 23. **Save Rules**
 
+![Rule parameters](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/23-rule_parameters.JPG)
+
 # Task 6: Identify an EC2 Instance's VPC and subnet
 
 The purpose of this task is to enable me find the VPC and subnet for an EC2 instance.  I also need to test the **Web-Server_SG** security group configuration by confirming that I have acess to the EC2 instance.
@@ -188,22 +210,34 @@ The purpose of this task is to enable me find the VPC and subnet for an EC2 inst
 ![SG of an EC2 instance in a VPC and subnet](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/task6-EC2-instance.JPG)
 
 24. On the **Services** menu, I chose intsances
+
+![choose instances](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/24-choose_instances.jpg)
+
+
 25. I selected the **Instances (Running)** option
 
-26. I selected **Web-server**
-27. In the details tab, the value for the **VPC ID** was located. It is verified that there is an EC2 instance deployed into the **Example VPC**. The VPC and subnet specified when reating a subnet cannot be changed.
 
-## I Tested the connectivity by Verifying that I can reach the website
+26. I selected **Web-server**
+
+
+27. In the details tab, the value for the **VPC ID** was located under **Instance Summary**. It is verified that there is an EC2 instance deployed into the **Example VPC**. The VPC and subnet specified when creating a subnet cannot be changed.
+
+![web-server_instance_details](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/27-web-server_instance_details.JPG)
+
+## To tested the connectivity by Verifying that I can reach the website
 
 28. From the details tab, I copied the **Public IPV4 address** 
-29. On a new browser tab, I pated the IP copies and pressed Enter key and go a **Hello from your webserver!** mesage
+
+29. On a new browser tab, I pasted the IP copies and pressed Enter key and got a **Hello from your webserver!** message
+
+![Hello Message](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/29-hello_message.JPG)
 
 # Part 2: Creating a VPC
 
 Being able to use the default VPC during learning about and working with AWS cloud is very convenient. However, in the real world, you often need to create custom VPCs to meet a customer's requirements. For example, a customer might have already used the CIDR range of the default VPC in their on-premises network configuration. A customer might also want to vary how many addresses are included in each subnet. Because it is not possible to change the CIDR ranges assigned to the VPC or its subnets, you need to create a new VPC for your customer.
 
 
-In this part of the lab I will create a VOC witht the following requirements given by a hypothetical customer
+In this part of the lab I will create a VPC with the following requirements given by a hypothetical customer
 
 
 Top-level VPC
@@ -243,6 +277,9 @@ Any value not provided by the lab instructions was left as a default value.
 
 33. Choose **Create VPC** and configure the following settings:
 
+
+![Some Create vpc Parameters](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/33-create_vpc_parameters.JPG)
+
 - For **Resources to create**, choose **VPC and more**
 
 - For **Name tag auto-generation**, enter ```Lab```.
@@ -251,15 +288,23 @@ Any value not provided by the lab instructions was left as a default value.
 
 For **Availability Zones (AZs)**, choose **2**.
 
+![Number of availability zones](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/33-number_of_availability_zones.JPG)
+
 - For **Number of public subnets**, choose **2**.
+![Number of public subnets](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/33-number_of-public_subnets.JPG)
 
 - For **Number of private subnets**, choose **2**.
 
+![Number of Private subnets](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/33-number_of-private_subnets.jpg)
+
 - Expand **Customize subnets CIDR blocks**.
+![Customize CIDR blocks Parameters](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/33-expand_customize_Subnets_CIDR_blocks.JPG)
 
 - Update the subnet CIDR block values using the ranges provided by your customer.
 
 34. Take a moment to review the **Preview** diagram provided in the wizard.
+
+![VPC preview Wizard](/AWS/aws-educate-labs/assets/screenshots/004-amazon_networking_lab/34-preview_diagram_wizard.JPG)
 
 Choose **Create VPC**.
 
@@ -338,17 +383,17 @@ From the list of Amazon Machine Images, select **Amazon Linux 2 AMI**.
 
 - In the **Key pair (login)** section, from the **Key pair name - required** dropdown list, choose **Proceed without a key pair (not recommended)**.
 
-- In the **Network settings** section, choose **Edit**.
+    - In the **Network settings** section, choose **Edit**.
 
-- For **VPC - required**, choose **Lab-vpc**.
+    - For **VPC - required**, choose **Lab-vpc**.
 
-- For **Subnet**, choose the subnet with **public1** in the name.
+    - For **Subnet**, choose the subnet with **public1** in the name.
 
-- For **Auto-assign public IP**, choose **Enable**.
+    - For **Auto-assign public IP**, choose **Enable**.
 
-- For **Firewall (security groups)**, choose **Select an existing security group**.
+    - For **Firewall (security groups)**, choose **Select an existing security group**.
 
-- From the **Common security groups** dropdown list, choose the **Web-Server2-SG** security group.
+    - From the **Common security groups** dropdown list, choose the **Web-Server2-SG** security group.
 
 - In the  **Advanced Details** section, for **IAM instance profile**, choose **Work-Role**.
 
